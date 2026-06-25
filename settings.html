@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings — Reva Reputation Manager</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/sidebar.css"/>
+  <link rel="stylesheet" href="css/settings.css"/>
+</head>
+<body>
+
+<div class="reva-layout">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="main-content">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="ti ti-menu-2"></i></button>
+        <div class="topbar-left">
+          <div class="topbar-title">Settings</div>
+          <div class="topbar-subtitle">Manage your account, clients and preferences</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-user">
+          <div class="topbar-user-avatar" id="user-initials">KA</div>
+          <div>
+            <div class="topbar-user-name" id="user-name">Kashif Mehmood</div>
+            <div class="topbar-user-role" id="user-role">Digital Marketing Executive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body" style="padding-bottom:80px;">
+
+      <div class="settings-layout">
+
+        <!-- ===== LEFT NAV ===== -->
+        <div class="settings-nav-card">
+          <div class="settings-nav-title">Settings</div>
+          <a class="settings-nav-item" data-section="profile" href="#">
+            <i class="ti ti-user-circle"></i> My Profile
+          </a>
+          <a class="settings-nav-item" data-section="clients" href="#">
+            <i class="ti ti-users"></i> Manage Clients
+          </a>
+          <a class="settings-nav-item" data-section="notifications" href="#">
+            <i class="ti ti-bell"></i> Notifications
+          </a>
+          <a class="settings-nav-item" data-section="platforms" href="#">
+            <i class="ti ti-plug-connected"></i> Platforms
+          </a>
+          <a class="settings-nav-item" data-section="ai" href="#">
+            <i class="ti ti-sparkles"></i> AI Settings
+          </a>
+          <a class="settings-nav-item" data-section="users" href="#">
+            <i class="ti ti-shield-lock"></i> Team & Access
+          </a>
+          <a class="settings-nav-item" data-section="danger" href="#">
+            <i class="ti ti-alert-triangle"></i> Danger Zone
+          </a>
+        </div>
+
+        <!-- ===== RIGHT CONTENT ===== -->
+        <div>
+
+          <!-- ======= PROFILE ======= -->
+          <div class="settings-section" id="section-profile">
+
+            <div class="settings-card">
+              <div class="profile-avatar-row">
+                <div class="profile-avatar-large" id="profile-avatar-initials">KA</div>
+                <div class="profile-avatar-info">
+                  <h3 id="profile-name-display">Kashif Ahmed</h3>
+                  <p id="profile-role-display">Manager · Reva Solutions</p>
+                  <button class="btn btn-secondary btn-sm">
+                    <i class="ti ti-camera"></i> Change Photo
+                  </button>
+                </div>
+              </div>
+
+              <div class="settings-card-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">First Name</label>
+                    <input class="form-input" type="text" id="field-firstname" placeholder="First name"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Last Name</label>
+                    <input class="form-input" type="text" id="field-lastname" placeholder="Last name"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input class="form-input" type="email" placeholder="kashif@revasolutions.qa"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input class="form-input" type="text" placeholder="kashif"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <input class="form-input" type="text" value="Digital Marketing Executive" readonly style="background:var(--reva-off-white);color:var(--text-muted);"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Phone / WhatsApp</label>
+                    <input class="form-input" type="tel" placeholder="+974 XXXX XXXX"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-lock"></i> Change Password</div>
+                  <div class="settings-card-sub">Update your login password</div>
+                </div>
+              </div>
+              <div class="settings-card-body">
+                <div class="form-grid">
+                  <div class="form-group" style="grid-column:1/-1;">
+                    <label class="form-label">Current Password</label>
+                    <input class="form-input" type="password" placeholder="Enter current password"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">New Password</label>
+                    <input class="form-input" type="password" placeholder="New password"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input class="form-input" type="password" placeholder="Confirm new password"/>
+                  </div>
+                </div>
+                <button class="btn btn-dark btn-sm">
+                  <i class="ti ti-lock-check"></i> Update Password
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ======= CLIENTS ======= -->
+          <div class="settings-section" id="section-clients">
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-users"></i> Manage Clients</div>
+                  <div class="settings-card-sub">Add, edit or remove clients from the system</div>
+                </div>
+                <button class="btn btn-primary btn-sm">
+                  <i class="ti ti-plus"></i> Add Client
+                </button>
+              </div>
+              <div id="settings-client-list">
+                <!-- Rendered by settings.js -->
+              </div>
+              <div class="add-client-btn-row">
+                <button class="btn btn-secondary btn-sm w-100">
+                  <i class="ti ti-plus"></i> Add New Client
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ======= NOTIFICATIONS ======= -->
+          <div class="settings-section" id="section-notifications">
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-bell"></i> Alert Notifications</div>
+                  <div class="settings-card-sub">Choose how and when you get alerted</div>
+                </div>
+              </div>
+              <div class="settings-card-body">
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Email alerts</div>
+                    <div class="setting-desc">Receive email notifications for urgent reviews (1★ and 2★)</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">WhatsApp alerts</div>
+                    <div class="setting-desc">Get instant WhatsApp messages for urgent reviews</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Daily digest email</div>
+                    <div class="setting-desc">Receive a morning summary of all activity from the previous day</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox"/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Positive review notifications</div>
+                    <div class="setting-desc">Get notified when clients receive 4★ or 5★ reviews</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox"/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Alert urgency threshold</div>
+                    <div class="setting-desc">Minimum star rating that triggers an urgent alert</div>
+                  </div>
+                  <select class="setting-select setting-control">
+                    <option value="1">1★ only</option>
+                    <option value="2" selected>2★ and below</option>
+                    <option value="3">3★ and below</option>
+                  </select>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Quiet hours</div>
+                    <div class="setting-desc">Pause notifications during these hours (Qatar time)</div>
+                  </div>
+                  <select class="setting-select setting-control">
+                    <option>Off</option>
+                    <option selected>11 PM – 7 AM</option>
+                    <option>10 PM – 8 AM</option>
+                    <option>12 AM – 9 AM</option>
+                  </select>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-file-analytics"></i> Report Notifications</div>
+                  <div class="settings-card-sub">Control when monthly reports are sent</div>
+                </div>
+              </div>
+              <div class="settings-card-body">
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Auto-generate reports</div>
+                    <div class="setting-desc">Automatically generate monthly reports on the 1st of each month</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Auto-send to clients</div>
+                    <div class="setting-desc">Automatically email reports to clients on the 2nd of each month</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox"/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Notify me when report is sent</div>
+                    <div class="setting-desc">Get an email confirmation each time a report is sent to a client</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ======= PLATFORMS ======= -->
+          <div class="settings-section" id="section-platforms">
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-brand-google"></i> Google Business Profile</div>
+                  <div class="settings-card-sub">Connected via Google My Business API</div>
+                </div>
+                <span class="badge badge-success">Connected</span>
+              </div>
+              <div class="settings-card-body">
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Sync frequency</div>
+                    <div class="setting-desc">How often to check for new reviews from Google</div>
+                  </div>
+                  <select class="setting-select setting-control">
+                    <option>Every 15 minutes</option>
+                    <option>Every 30 minutes</option>
+                    <option>Every hour</option>
+                  </select>
+                </div>
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Auto-sync new clients</div>
+                    <div class="setting-desc">Automatically link new clients to their Google Business profile</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-brand-facebook"></i> Facebook Pages</div>
+                  <div class="settings-card-sub">Connected via Meta Graph API</div>
+                </div>
+                <span class="badge badge-success">Connected</span>
+              </div>
+              <div class="settings-card-body">
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Sync frequency</div>
+                    <div class="setting-desc">How often to check for new reviews from Facebook</div>
+                  </div>
+                  <select class="setting-select setting-control">
+                    <option>Every 15 minutes</option>
+                    <option>Every 30 minutes</option>
+                    <option>Every hour</option>
+                  </select>
+                </div>
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Include Facebook recommendations</div>
+                    <div class="setting-desc">Also pull in Facebook recommendations (not just star reviews)</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title" style="color:var(--text-muted);">
+                    <i class="ti ti-world" style="color:var(--text-muted);"></i> Future Platforms
+                  </div>
+                  <div class="settings-card-sub">Coming soon — TripAdvisor, Zomato, Trustpilot</div>
+                </div>
+                <span class="badge badge-neutral">Coming Soon</span>
+              </div>
+              <div class="settings-card-body">
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div class="setting-row" style="opacity:0.5;">
+                    <div class="setting-info">
+                      <div class="setting-label">TripAdvisor</div>
+                      <div class="setting-desc">For hotel and restaurant clients</div>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" disabled>Coming Soon</button>
+                  </div>
+                  <div class="setting-row" style="opacity:0.5;">
+                    <div class="setting-info">
+                      <div class="setting-label">Zomato</div>
+                      <div class="setting-desc">For restaurant and café clients</div>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" disabled>Coming Soon</button>
+                  </div>
+                  <div class="setting-row" style="border:none;opacity:0.5;">
+                    <div class="setting-info">
+                      <div class="setting-label">Trustpilot</div>
+                      <div class="setting-desc">For service-based clients</div>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" disabled>Coming Soon</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ======= AI SETTINGS ======= -->
+          <div class="settings-section" id="section-ai">
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-sparkles"></i> AI Reply Engine</div>
+                  <div class="settings-card-sub">Configure how AI generates review responses</div>
+                </div>
+              </div>
+              <div class="settings-card-body">
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Enable AI reply suggestions</div>
+                    <div class="setting-desc">Show AI-generated reply suggestions for all incoming reviews</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Default reply tone</div>
+                    <div class="setting-desc">How the AI should sound when replying to reviews</div>
+                  </div>
+                  <select class="setting-select setting-control">
+                    <option>Professional</option>
+                    <option selected>Friendly & Warm</option>
+                    <option>Formal</option>
+                    <option>Casual</option>
+                  </select>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Reply language</div>
+                    <div class="setting-desc">Language used for AI-generated replies</div>
+                  </div>
+                  <select class="setting-select setting-control">
+                    <option selected>English</option>
+                    <option>Arabic</option>
+                    <option>English + Arabic</option>
+                  </select>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Include client name in reply</div>
+                    <div class="setting-desc">Mention the business name at the end of every reply</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Auto-flag suspicious reviews</div>
+                    <div class="setting-desc">Automatically flag reviews that look fake or spam for manual review</div>
+                  </div>
+                  <label class="toggle setting-control">
+                    <input type="checkbox" checked/>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-message-2"></i> Reply Templates</div>
+                  <div class="settings-card-sub">Customize default reply templates per review type</div>
+                </div>
+                <button class="btn btn-secondary btn-sm">
+                  <i class="ti ti-plus"></i> Add Template
+                </button>
+              </div>
+              <div class="settings-card-body">
+                <div class="form-group">
+                  <label class="form-label">5★ Positive reply template</label>
+                  <textarea class="form-input" rows="3" style="resize:vertical;">Thank you so much, [Name]! We're thrilled to hear about your positive experience at [Business]. Your kind words mean a lot to our team, and we look forward to welcoming you back soon! 😊</textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">3★ Neutral reply template</label>
+                  <textarea class="form-input" rows="3" style="resize:vertical;">Thank you for your feedback, [Name]. We appreciate you taking the time to share your experience. We're working to improve and hope to see you again for a better visit!</textarea>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label">1-2★ Negative reply template</label>
+                  <textarea class="form-input" rows="3" style="resize:vertical;">Dear [Name], we sincerely apologize for your disappointing experience. This is not the standard we hold ourselves to at [Business]. Please reach out to us directly so we can resolve this personally.</textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ======= USERS / TEAM ======= -->
+          <div class="settings-section" id="section-users">
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title"><i class="ti ti-shield-lock"></i> Team Members</div>
+                  <div class="settings-card-sub">Manage who has access to this dashboard</div>
+                </div>
+                <button class="btn btn-primary btn-sm">
+                  <i class="ti ti-plus"></i> Invite User
+                </button>
+              </div>
+
+              <div class="user-manage-row">
+                <div class="user-manage-avatar" style="background:var(--reva-orange);">KA</div>
+                <div style="flex:1;">
+                  <div style="font-size:13px;font-weight:700;">Kashif Ahmed</div>
+                  <div style="font-size:11px;color:var(--text-muted);">kashif@revasolutions.qa · Digital Marketing Executive</div>
+                </div>
+                <span class="badge badge-orange">Manager</span>
+                <span style="font-size:11px;color:var(--status-success);">● Active</span>
+              </div>
+
+              <div class="user-manage-row">
+                <div class="user-manage-avatar" style="background:#334155;">AU</div>
+                <div style="flex:1;">
+                  <div style="font-size:13px;font-weight:700;">Admin User</div>
+                  <div style="font-size:11px;color:var(--text-muted);">admin@revasolutions.qa · Administrator</div>
+                </div>
+                <span class="badge badge-neutral">Admin</span>
+                <span style="font-size:11px;color:var(--status-success);">● Active</span>
+              </div>
+
+              <div style="padding:14px 20px;border-top:1px solid var(--reva-border);">
+                <button class="btn btn-secondary btn-sm w-100">
+                  <i class="ti ti-mail"></i> Invite New Team Member
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ======= DANGER ZONE ======= -->
+          <div class="settings-section" id="section-danger">
+
+            <div class="settings-card danger-zone">
+              <div class="settings-card-header">
+                <div>
+                  <div class="settings-card-title">
+                    <i class="ti ti-alert-triangle"></i> Danger Zone
+                  </div>
+                  <div class="settings-card-sub" style="color:#c53030;">These actions are irreversible. Proceed with caution.</div>
+                </div>
+              </div>
+              <div class="settings-card-body">
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Clear all review data</div>
+                    <div class="setting-desc">Delete all synced reviews from the database. This cannot be undone. Reviews will re-sync from Google and Facebook on next refresh.</div>
+                  </div>
+                  <button class="btn btn-sm setting-control" style="background:#fff5f5;color:var(--status-urgent);border:1px solid #feb2b2;white-space:nowrap;">
+                    <i class="ti ti-trash"></i> Clear Data
+                  </button>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-info">
+                    <div class="setting-label">Disconnect all platforms</div>
+                    <div class="setting-desc">Disconnect Google and Facebook API connections for all clients. Clients will need to be reconnected manually.</div>
+                  </div>
+                  <button class="btn btn-sm setting-control" style="background:#fff5f5;color:var(--status-urgent);border:1px solid #feb2b2;white-space:nowrap;">
+                    <i class="ti ti-plug-x"></i> Disconnect
+                  </button>
+                </div>
+
+                <div class="setting-row" style="border:none;">
+                  <div class="setting-info">
+                    <div class="setting-label">Reset all settings to default</div>
+                    <div class="setting-desc">Restore all notification preferences, AI settings, and system settings to their original defaults.</div>
+                  </div>
+                  <button class="btn btn-sm setting-control" style="background:#fff5f5;color:var(--status-urgent);border:1px solid #feb2b2;white-space:nowrap;">
+                    <i class="ti ti-refresh"></i> Reset
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- end right content -->
+
+      </div>
+
+    </div>
+
+    <!-- SAVE BAR -->
+    <div class="save-bar" id="save-bar">
+      <span style="font-size:13px;color:var(--text-secondary);">
+        <i class="ti ti-info-circle"></i> You have unsaved changes
+      </span>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-secondary btn-sm" onclick="discardChanges()">Discard</button>
+        <button class="btn btn-primary btn-sm" id="save-btn" onclick="saveSettings()">
+          <i class="ti ti-device-floppy"></i> Save Changes
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alerts — Reva Reputation Manager</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/sidebar.css"/>
+  <link rel="stylesheet" href="css/alerts.css"/>
+</head>
+<body>
+
+<div class="reva-layout">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="main-content">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="ti ti-menu-2"></i></button>
+        <div class="topbar-left">
+          <div class="topbar-title">Alerts</div>
+          <div class="topbar-subtitle">Stay on top of every urgent review</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-icon-btn" onclick="markAllRead()" title="Mark all read">
+          <i class="ti ti-checks"></i>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-user-avatar" id="user-initials">KA</div>
+          <div>
+            <div class="topbar-user-name" id="user-name">Kashif Ahmed</div>
+            <div class="topbar-user-role" id="user-role">Manager</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+
+      <!-- STATS -->
+      <div class="alerts-stats">
+        <div class="alert-stat">
+          <div class="alert-stat-icon stat-icon-orange"><i class="ti ti-bell"></i></div>
+          <div class="alert-stat-info">
+            <div class="label">Total Alerts</div>
+            <div class="value" id="as-total">—</div>
+          </div>
+        </div>
+        <div class="alert-stat">
+          <div class="alert-stat-icon" style="background:#fff0ee;color:var(--reva-orange);"><i class="ti ti-bell-ringing"></i></div>
+          <div class="alert-stat-info">
+            <div class="label">Unread</div>
+            <div class="value" id="as-unread">—</div>
+          </div>
+        </div>
+        <div class="alert-stat">
+          <div class="alert-stat-icon stat-icon-red"><i class="ti ti-alert-triangle"></i></div>
+          <div class="alert-stat-info">
+            <div class="label">Urgent</div>
+            <div class="value" id="as-urgent">—</div>
+          </div>
+        </div>
+        <div class="alert-stat">
+          <div class="alert-stat-icon stat-icon-blue"><i class="ti ti-alert-circle"></i></div>
+          <div class="alert-stat-info">
+            <div class="label">Standard</div>
+            <div class="value" id="as-warning">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAYOUT -->
+      <div class="alerts-layout">
+
+        <!-- LEFT: ALERTS LIST -->
+        <div class="alerts-card">
+          <div class="alerts-card-header">
+            <div>
+              <div style="font-size:14px;font-weight:700;">Alert Queue</div>
+              <div class="text-muted text-sm" id="alerts-count">Loading...</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="markAllRead()">
+              <i class="ti ti-checks"></i> Mark all read
+            </button>
+          </div>
+
+          <!-- Tabs -->
+          <div class="alert-tabs">
+            <button class="alert-tab active" data-filter="all">All</button>
+            <button class="alert-tab" data-filter="unread"><i class="ti ti-bell-ringing"></i> Unread</button>
+            <button class="alert-tab" data-filter="urgent">🔴 Urgent</button>
+            <button class="alert-tab" data-filter="warning">🟡 Standard</button>
+            <button class="alert-tab" data-filter="info">🔵 Info</button>
+          </div>
+
+          <!-- List -->
+          <div id="alerts-list"></div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="alerts-right">
+
+          <!-- Summary -->
+          <div class="alert-summary-card">
+            <div class="alert-summary-title"><i class="ti ti-chart-pie" style="font-size:13px;margin-right:4px;"></i> Alert Summary</div>
+            <div class="summary-row">
+              <span class="summary-label"><span style="color:var(--status-urgent);">🔴</span> Urgent</span>
+              <span class="summary-count" id="sum-urgent">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label"><span style="color:var(--status-warning);">🟡</span> Standard</span>
+              <span class="summary-count" id="sum-warning">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label"><span style="color:var(--status-info);">🔵</span> Info</span>
+              <span class="summary-count" id="sum-info">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label"><span style="color:var(--status-success);">🟢</span> Positive</span>
+              <span class="summary-count" id="sum-positive">—</span>
+            </div>
+          </div>
+
+          <!-- Notification Preferences -->
+          <div class="alert-summary-card">
+            <div class="alert-summary-title"><i class="ti ti-settings" style="font-size:13px;margin-right:4px;"></i> Notification Prefs</div>
+            <div class="notif-pref-row">
+              <div class="notif-label">
+                <span>Email alerts</span>
+                <span>Urgent reviews only</span>
+              </div>
+              <label class="toggle"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="notif-pref-row">
+              <div class="notif-label">
+                <span>WhatsApp alerts</span>
+                <span>1★ and 2★ reviews</span>
+              </div>
+              <label class="toggle"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="notif-pref-row">
+              <div class="notif-label">
+                <span>Daily digest</span>
+                <span>Summary every morning</span>
+              </div>
+              <label class="toggle"><input type="checkbox"/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="notif-pref-row">
+              <div class="notif-label">
+                <span>Positive reviews</span>
+                <span>4★ and 5★ reviews</span>
+              </div>
+              <label class="toggle"><input type="checkbox"/><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="alert-summary-card">
+            <div class="alert-summary-title"><i class="ti ti-bolt" style="font-size:13px;margin-right:4px;"></i> Quick Actions</div>
+            <div style="padding:12px 16px;display:flex;flex-direction:column;gap:8px;">
+              <a href="reviews.html" class="btn btn-secondary btn-sm w-100">
+                <i class="ti ti-messages"></i> Go to Reviews
+              </a>
+              <a href="dashboard.html" class="btn btn-secondary btn-sm w-100">
+                <i class="ti ti-layout-dashboard"></i> Dashboard
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/alerts.js"></script>
+</body>
+</html>

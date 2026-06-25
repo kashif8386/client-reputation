@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Reviews — Reva Reputation Manager</title>
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/sidebar.css"/>
+  <link rel="stylesheet" href="css/reviews.css"/>
+  <link rel="stylesheet" href="css/client.css"/>
+</head>
+<body>
+
+<div class="reva-layout">
+
+  <!-- SIDEBAR -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i class="ti ti-menu-2"></i>
+        </button>
+        <div class="topbar-left">
+          <div class="topbar-title">All Reviews</div>
+          <div class="topbar-subtitle">Every review from every client — one inbox</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-icon-btn" title="Refresh">
+          <i class="ti ti-refresh"></i>
+        </button>
+        <button class="topbar-icon-btn" title="Alerts">
+          <i class="ti ti-bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-user-avatar" id="user-initials">KA</div>
+          <div>
+            <div class="topbar-user-name" id="user-name">Kashif Ahmed</div>
+            <div class="topbar-user-role" id="user-role">Manager</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE BODY -->
+    <div class="page-body">
+
+      <!-- STATS STRIP -->
+      <div class="reviews-stats">
+
+        <div class="reviews-stat">
+          <div class="reviews-stat-icon stat-icon-orange">
+            <i class="ti ti-messages"></i>
+          </div>
+          <div class="reviews-stat-info">
+            <div class="label">Total Reviews</div>
+            <div class="value" id="rs-total">—</div>
+          </div>
+        </div>
+
+        <div class="reviews-stat">
+          <div class="reviews-stat-icon stat-icon-red">
+            <i class="ti ti-message-exclamation"></i>
+          </div>
+          <div class="reviews-stat-info">
+            <div class="label">Pending Replies</div>
+            <div class="value" id="rs-pending">—</div>
+          </div>
+        </div>
+
+        <div class="reviews-stat">
+          <div class="reviews-stat-icon" style="background:#fff0ee;color:#e53e3e;">
+            <i class="ti ti-alert-triangle"></i>
+          </div>
+          <div class="reviews-stat-info">
+            <div class="label">Urgent</div>
+            <div class="value" id="rs-urgent">—</div>
+          </div>
+        </div>
+
+        <div class="reviews-stat">
+          <div class="reviews-stat-icon stat-icon-green">
+            <i class="ti ti-thumb-up"></i>
+          </div>
+          <div class="reviews-stat-info">
+            <div class="label">Positive (4-5★)</div>
+            <div class="value" id="rs-positive">—</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAIN LAYOUT -->
+      <div class="reviews-layout">
+
+        <!-- LEFT: INBOX -->
+        <div>
+          <div class="reviews-inbox">
+
+            <!-- Inbox Header -->
+            <div class="inbox-header">
+              <div>
+                <div style="font-size:14px;font-weight:700;color:var(--text-primary);">Reviews Inbox</div>
+                <div style="font-size:12px;color:var(--text-muted);" id="inbox-count">Loading...</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div class="inbox-search">
+                  <i class="ti ti-search"></i>
+                  <input type="text" id="inbox-search-input" placeholder="Search reviews or clients..."/>
+                </div>
+                <button class="btn btn-primary btn-sm">
+                  <i class="ti ti-sparkles"></i> Reply All Pending
+                </button>
+              </div>
+            </div>
+
+            <!-- Tab Bar -->
+            <div class="inbox-tabs">
+              <button class="inbox-tab active" data-filter="all">
+                All <span class="tab-count">—</span>
+              </button>
+              <button class="inbox-tab" data-filter="pending">
+                <i class="ti ti-clock"></i> Pending
+              </button>
+              <button class="inbox-tab" data-filter="urgent">
+                🔴 Urgent
+              </button>
+              <button class="inbox-tab" data-filter="positive">
+                <i class="ti ti-thumb-up"></i> Positive
+              </button>
+              <button class="inbox-tab" data-filter="negative">
+                <i class="ti ti-thumb-down"></i> Negative
+              </button>
+              <button class="inbox-tab" data-filter="google">
+                <i class="ti ti-brand-google"></i> Google
+              </button>
+              <button class="inbox-tab" data-filter="facebook">
+                <i class="ti ti-brand-facebook"></i> Facebook
+              </button>
+            </div>
+
+            <!-- Reviews List -->
+            <div id="reviews-inbox-list">
+              <div class="inbox-empty">
+                <i class="ti ti-loader" style="animation:spin 1s linear infinite"></i>
+                <p>Loading reviews...</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT: FILTERS & SENTIMENT -->
+        <div class="reviews-filter-panel">
+
+          <!-- Filter by Client -->
+          <div class="filter-card">
+            <div class="filter-card-title">
+              <i class="ti ti-filter" style="font-size:14px;margin-right:4px;"></i> Filter by Client
+            </div>
+            <div id="client-filter-list">
+              <!-- Rendered by reviews.js -->
+            </div>
+          </div>
+
+          <!-- Sentiment Summary -->
+          <div class="filter-card">
+            <div class="filter-card-title">
+              <i class="ti ti-chart-pie" style="font-size:14px;margin-right:4px;"></i> Sentiment Insights
+            </div>
+            <div class="sentiment-list">
+              <div class="sentiment-row">
+                <span style="font-size:12px;color:var(--status-success);font-weight:600;">👍 Praised</span>
+              </div>
+              <div class="sentiment-row">
+                <span style="font-size:12px;color:var(--text-secondary);">Service quality</span>
+                <div class="sentiment-bar-track"><div class="sentiment-bar-fill pos-bar" style="width:85%"></div></div>
+              </div>
+              <div class="sentiment-row">
+                <span style="font-size:12px;color:var(--text-secondary);">Cleanliness</span>
+                <div class="sentiment-bar-track"><div class="sentiment-bar-fill pos-bar" style="width:70%"></div></div>
+              </div>
+              <div class="sentiment-row">
+                <span style="font-size:12px;color:var(--text-secondary);">Friendly staff</span>
+                <div class="sentiment-bar-track"><div class="sentiment-bar-fill pos-bar" style="width:65%"></div></div>
+              </div>
+              <div class="sentiment-row" style="margin-top:8px;">
+                <span style="font-size:12px;color:var(--status-urgent);font-weight:600;">👎 Complaints</span>
+              </div>
+              <div class="sentiment-row">
+                <span style="font-size:12px;color:var(--text-secondary);">Waiting time</span>
+                <div class="sentiment-bar-track"><div class="sentiment-bar-fill neg-bar" style="width:45%"></div></div>
+              </div>
+              <div class="sentiment-row">
+                <span style="font-size:12px;color:var(--text-secondary);">Parking</span>
+                <div class="sentiment-bar-track"><div class="sentiment-bar-fill neg-bar" style="width:30%"></div></div>
+              </div>
+              <div class="sentiment-row">
+                <span style="font-size:12px;color:var(--text-secondary);">Wait time</span>
+                <div class="sentiment-bar-track"><div class="sentiment-bar-fill neg-bar" style="width:25%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="filter-card">
+            <div class="filter-card-title">
+              <i class="ti ti-bolt" style="font-size:14px;margin-right:4px;"></i> Quick Actions
+            </div>
+            <div style="padding:12px 16px;display:flex;flex-direction:column;gap:8px;">
+              <a href="dashboard.html" class="btn btn-secondary btn-sm w-100">
+                <i class="ti ti-layout-dashboard"></i> Back to Dashboard
+              </a>
+              <button class="btn btn-secondary btn-sm w-100">
+                <i class="ti ti-file-export"></i> Export Reviews
+              </button>
+              <button class="btn btn-secondary btn-sm w-100">
+                <i class="ti ti-report"></i> View Reports
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <!-- end right panel -->
+
+      </div>
+
+    </div>
+    <!-- end page-body -->
+
+  </div>
+
+</div>
+
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .platform-tag { display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px; }
+  .platform-google { background:#e8f0fe;color:#1a73e8; }
+  .platform-facebook { background:#e7f0ff;color:#1877f2; }
+</style>
+
+<!-- Scripts -->
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/reviews.js"></script>
+
+</body>
+</html>

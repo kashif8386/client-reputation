@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reports — Reva Reputation Manager</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/sidebar.css"/>
+  <link rel="stylesheet" href="css/reports.css"/>
+</head>
+<body>
+
+<div class="reva-layout">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="main-content">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="ti ti-menu-2"></i></button>
+        <div class="topbar-left">
+          <div class="topbar-title">Monthly Reports</div>
+          <div class="topbar-subtitle">Generate & send reports to all clients</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="btn btn-primary btn-sm" onclick="generateAll()">
+          <i class="ti ti-file-analytics"></i> Generate All
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-user-avatar" id="user-initials">KA</div>
+          <div>
+            <div class="topbar-user-name" id="user-name">Kashif Ahmed</div>
+            <div class="topbar-user-role" id="user-role">Manager</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+
+      <!-- STATS -->
+      <div class="reports-stats">
+        <div class="report-stat">
+          <div class="report-stat-icon stat-icon-orange"><i class="ti ti-file-analytics"></i></div>
+          <div class="report-stat-info">
+            <div class="label">Total Clients</div>
+            <div class="value" id="rp-total">—</div>
+          </div>
+        </div>
+        <div class="report-stat">
+          <div class="report-stat-icon stat-icon-green"><i class="ti ti-circle-check"></i></div>
+          <div class="report-stat-info">
+            <div class="label">Reports Sent</div>
+            <div class="value" id="rp-sent">—</div>
+          </div>
+        </div>
+        <div class="report-stat">
+          <div class="report-stat-icon stat-icon-blue"><i class="ti ti-loader-2"></i></div>
+          <div class="report-stat-info">
+            <div class="label">Generating</div>
+            <div class="value" id="rp-generating">—</div>
+          </div>
+        </div>
+        <div class="report-stat">
+          <div class="report-stat-icon stat-icon-red"><i class="ti ti-clock"></i></div>
+          <div class="report-stat-info">
+            <div class="label">Pending</div>
+            <div class="value" id="rp-pending">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAYOUT -->
+      <div class="reports-layout">
+
+        <!-- LEFT: REPORTS LIST -->
+        <div class="reports-card">
+          <div class="reports-card-header">
+            <div>
+              <div style="font-size:14px;font-weight:700;">June 2024 — Monthly Reports</div>
+              <div class="text-muted text-sm">One report per client, auto-generated with Reva branding</div>
+            </div>
+            <button class="btn btn-secondary btn-sm">
+              <i class="ti ti-filter"></i> Filter
+            </button>
+          </div>
+          <div id="reports-list">
+            <!-- Rendered by reports.js -->
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="reports-right">
+
+          <!-- What's included -->
+          <div class="reports-panel-card">
+            <div class="panel-title"><i class="ti ti-file-description"></i> Report Includes</div>
+            <div class="panel-row"><span class="pl"><i class="ti ti-star" style="font-size:13px;margin-right:4px;"></i>Rating summary</span><span class="pv">✓</span></div>
+            <div class="panel-row"><span class="pl"><i class="ti ti-messages" style="font-size:13px;margin-right:4px;"></i>New reviews</span><span class="pv">✓</span></div>
+            <div class="panel-row"><span class="pl"><i class="ti ti-chart-line" style="font-size:13px;margin-right:4px;"></i>Response rate</span><span class="pv">✓</span></div>
+            <div class="panel-row"><span class="pl"><i class="ti ti-mood-happy" style="font-size:13px;margin-right:4px;"></i>Sentiment insights</span><span class="pv">✓</span></div>
+            <div class="panel-row"><span class="pl"><i class="ti ti-trending-up" style="font-size:13px;margin-right:4px;"></i>Rating trend</span><span class="pv">✓</span></div>
+            <div class="panel-row"><span class="pl"><i class="ti ti-brand-google" style="font-size:13px;margin-right:4px;"></i>Reva branding</span><span class="pv">✓</span></div>
+          </div>
+
+          <!-- Schedule -->
+          <div class="reports-panel-card">
+            <div class="panel-title"><i class="ti ti-calendar"></i> Report Schedule</div>
+            <div class="panel-row"><span class="pl">Auto-generate</span><span class="pv">1st of month</span></div>
+            <div class="panel-row"><span class="pl">Auto-send</span><span class="pv">2nd of month</span></div>
+            <div class="panel-row"><span class="pl">Format</span><span class="pv">PDF + Email</span></div>
+            <div class="panel-row"><span class="pl">Branding</span><span class="pv">Reva white-label</span></div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="reports-panel-card">
+            <div class="panel-title"><i class="ti ti-bolt"></i> Quick Actions</div>
+            <div style="padding:12px 16px;display:flex;flex-direction:column;gap:8px;">
+              <button class="btn btn-primary btn-sm w-100" onclick="generateAll()">
+                <i class="ti ti-file-analytics"></i> Generate All Reports
+              </button>
+              <button class="btn btn-secondary btn-sm w-100">
+                <i class="ti ti-send"></i> Send All Pending
+              </button>
+              <a href="dashboard.html" class="btn btn-secondary btn-sm w-100">
+                <i class="ti ti-layout-dashboard"></i> Back to Dashboard
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW MODAL -->
+<div class="modal-overlay" id="preview-modal">
+  <div class="modal-box" style="position:relative;">
+    <button onclick="closeModal()" style="position:absolute;top:14px;right:14px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-muted);">
+      <i class="ti ti-x"></i>
+    </button>
+
+    <div class="modal-title">Report Preview</div>
+    <div class="modal-sub">This is how the client will see their monthly report</div>
+
+    <!-- Report Preview Card -->
+    <div class="report-preview">
+      <div class="report-preview-header">
+        <div class="report-preview-logo"><span>REVA</span> Solutions</div>
+        <div style="font-size:11px;color:#888;">Reputation Manager</div>
+      </div>
+      <div class="report-preview-body">
+        <div class="report-preview-title" id="preview-client-name">—</div>
+        <div class="report-preview-period" id="preview-period">—</div>
+        <div class="report-preview-grid">
+          <div class="report-preview-stat">
+            <div class="val" id="preview-google">—</div>
+            <div class="lbl">Google Rating</div>
+          </div>
+          <div class="report-preview-stat">
+            <div class="val" id="preview-facebook">—</div>
+            <div class="lbl">Facebook Rating</div>
+          </div>
+          <div class="report-preview-stat">
+            <div class="val" id="preview-total">—</div>
+            <div class="lbl">Total Reviews</div>
+          </div>
+          <div class="report-preview-stat">
+            <div class="val" id="preview-response">—</div>
+            <div class="lbl">Response Rate</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);">
+          <span id="preview-replied">—</span>
+          <span>·</span>
+          <span id="preview-pending">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-primary btn-sm" style="flex:1;">
+        <i class="ti ti-send"></i> Send to Client
+      </button>
+      <button class="btn btn-secondary btn-sm" style="flex:1;">
+        <i class="ti ti-download"></i> Download PDF
+      </button>
+      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancel</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/reports.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client — Reva Reputation Manager</title>
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/sidebar.css"/>
+  <link rel="stylesheet" href="css/client.css"/>
+</head>
+<body>
+
+<div class="reva-layout">
+
+  <!-- SIDEBAR -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i class="ti ti-menu-2"></i>
+        </button>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <a href="dashboard.html" class="btn btn-ghost btn-sm" style="padding:6px 8px;">
+            <i class="ti ti-arrow-left"></i>
+          </a>
+          <div class="topbar-left">
+            <div class="topbar-title" id="topbar-client-name">Client</div>
+            <div class="topbar-subtitle">Reviews & Reputation</div>
+          </div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-icon-btn" title="Alerts">
+          <i class="ti ti-bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-user-avatar" id="user-initials">KA</div>
+          <div>
+            <div class="topbar-user-name" id="user-name">Kashif Ahmed</div>
+            <div class="topbar-user-role" id="user-role">Manager</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE BODY -->
+    <div class="page-body">
+
+      <!-- CLIENT HEADER CARD -->
+      <div class="client-header">
+        <div class="client-header-accent" id="client-accent"></div>
+        <div class="client-header-body">
+          <div class="client-header-left">
+            <div class="client-header-avatar" id="client-avatar"></div>
+            <div>
+              <div class="client-header-name" id="client-name">—</div>
+              <div class="client-header-meta">
+                <span class="client-meta-tag" id="client-category-tag"></span>
+                <span class="client-meta-tag" id="client-location-tag"></span>
+                <span class="client-meta-tag" id="client-email-tag"></span>
+              </div>
+            </div>
+          </div>
+          <div class="client-header-right">
+            <span class="badge" id="client-status-badge">—</span>
+            <button class="btn btn-secondary btn-sm">
+              <i class="ti ti-edit"></i> Edit Client
+            </button>
+            <button class="btn btn-primary btn-sm">
+              <i class="ti ti-file-analytics"></i> Generate Report
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLIENT STATS -->
+      <div class="client-stats">
+
+        <div class="client-stat-box">
+          <div class="label"><i class="ti ti-brand-google"></i> Google Rating</div>
+          <div class="value" id="cs-google">—</div>
+          <div class="sub">out of 5.0</div>
+        </div>
+
+        <div class="client-stat-box">
+          <div class="label"><i class="ti ti-brand-facebook"></i> Facebook Rating</div>
+          <div class="value" id="cs-facebook">—</div>
+          <div class="sub">out of 5.0</div>
+        </div>
+
+        <div class="client-stat-box">
+          <div class="label"><i class="ti ti-messages"></i> Total Reviews</div>
+          <div class="value" id="cs-total">—</div>
+          <div class="sub">all platforms</div>
+        </div>
+
+        <div class="client-stat-box">
+          <div class="label"><i class="ti ti-message-exclamation"></i> Pending Replies</div>
+          <div class="value" id="cs-pending">—</div>
+          <div class="sub">need response</div>
+        </div>
+
+      </div>
+
+      <!-- TWO COLUMN LAYOUT -->
+      <div class="client-columns">
+
+        <!-- LEFT: REVIEWS -->
+        <div class="card" style="padding:0;overflow:hidden;">
+          <div class="card-header" style="padding:14px 18px;margin:0">
+            <div>
+              <div class="card-title">Reviews</div>
+              <div class="text-muted text-sm">All reviews from Google & Facebook</div>
+            </div>
+            <button class="btn btn-primary btn-sm">
+              <i class="ti ti-sparkles"></i> Reply All Pending
+            </button>
+          </div>
+
+          <!-- Review Filter Tabs -->
+          <div class="review-tabs">
+            <button class="review-tab active" data-filter="all">All</button>
+            <button class="review-tab" data-filter="pending">Pending</button>
+            <button class="review-tab" data-filter="urgent">🔴 Urgent</button>
+            <button class="review-tab" data-filter="google">Google</button>
+            <button class="review-tab" data-filter="facebook">Facebook</button>
+          </div>
+
+          <!-- Reviews List -->
+          <div class="reviews-list" id="reviews-list">
+            <!-- Rendered by client.js -->
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="client-right-panel">
+
+          <!-- Response Rate -->
+          <div class="card">
+            <div class="card-title" style="margin-bottom:14px;">Response Rate</div>
+            <div style="font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:4px;" id="cs-response">—</div>
+            <div class="text-muted text-sm" style="margin-bottom:10px;">Industry benchmark: 40%+</div>
+            <div class="rate-bar-wrap">
+              <div class="rate-bar-track">
+                <div class="rate-bar-fill" id="response-bar-fill" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client Info -->
+          <div class="card">
+            <div class="card-title" style="margin-bottom:12px;">Client Info</div>
+            <div class="info-row">
+              <span class="info-label">Category</span>
+              <span class="info-value" id="info-category">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Location</span>
+              <span class="info-value">Doha, Qatar</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Platforms</span>
+              <span class="info-value">Google, Facebook</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Monthly Report</span>
+              <span class="badge badge-success">Sent ✓</span>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="card">
+            <div class="card-title" style="margin-bottom:12px;">Quick Actions</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <button class="btn btn-secondary w-100">
+                <i class="ti ti-file-analytics"></i> Generate Monthly Report
+              </button>
+              <button class="btn btn-secondary w-100">
+                <i class="ti ti-chart-line"></i> View Reputation Trends
+              </button>
+              <button class="btn btn-secondary w-100">
+                <i class="ti ti-mail"></i> Email Client Update
+              </button>
+              <button class="btn btn-ghost w-100" style="color:var(--status-urgent);border:1px solid #fed7d7;">
+                <i class="ti ti-alert-triangle"></i> Flag for Review
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- end page-body -->
+
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/client.js"></script>
+
+</body>
+</html>

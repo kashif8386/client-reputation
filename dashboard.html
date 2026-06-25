@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — Reva Reputation Manager</title>
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+
+  <!-- Styles: global + sidebar + this page only -->
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/sidebar.css"/>
+  <link rel="stylesheet" href="css/dashboard.css"/>
+</head>
+<body>
+
+<div class="reva-layout">
+
+  <!-- ===== SIDEBAR (loaded by sidebar.js) ===== -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i class="ti ti-menu-2"></i>
+        </button>
+        <div class="topbar-left">
+          <div class="topbar-title" id="topbar-greeting">Good morning 👋</div>
+          <div class="topbar-subtitle">Here's what's happening across your clients today</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-icon-btn" title="Refresh">
+          <i class="ti ti-refresh"></i>
+        </button>
+        <button class="topbar-icon-btn" title="Alerts">
+          <i class="ti ti-bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-user-avatar" id="user-initials">KA</div>
+          <div>
+            <div class="topbar-user-name" id="user-name">Kashif Mehmood</div>
+            <div class="topbar-user-role" id="user-role">Digital marketing Executive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE BODY -->
+    <div class="page-body">
+
+      <!-- STATS ROW -->
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <span class="stat-label">Total Clients</span>
+            <div class="stat-icon stat-icon-orange">
+              <i class="ti ti-users"></i>
+            </div>
+          </div>
+          <div class="stat-value" id="stat-clients">—</div>
+          <div class="stat-sub">
+            <span>Active SEO clients</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <span class="stat-label">Avg Rating</span>
+            <div class="stat-icon stat-icon-green">
+              <i class="ti ti-star"></i>
+            </div>
+          </div>
+          <div class="stat-value" id="stat-rating">—</div>
+          <div class="stat-sub">
+            <span class="up">↑ +0.3</span> vs last month
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <span class="stat-label">Pending Replies</span>
+            <div class="stat-icon stat-icon-red">
+              <i class="ti ti-message-exclamation"></i>
+            </div>
+          </div>
+          <div class="stat-value" id="stat-pending">—</div>
+          <div class="stat-sub">
+            <span class="down">Needs attention</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <span class="stat-label">Response Rate</span>
+            <div class="stat-icon stat-icon-blue">
+              <i class="ti ti-chart-line"></i>
+            </div>
+          </div>
+          <div class="stat-value" id="stat-response">—</div>
+          <div class="stat-sub">
+            <span class="up">↑ Above</span> 40% benchmark
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CLIENTS SECTION -->
+      <div class="section-header">
+        <div>
+          <h2>All Clients</h2>
+          <p>Click any client to view their reviews and manage reputation</p>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <!-- Search -->
+          <div class="search-box">
+            <i class="ti ti-search"></i>
+            <input type="text" id="client-search" placeholder="Search clients..."/>
+          </div>
+
+          <!-- Filters -->
+          <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn urgent-filter" data-filter="urgent">🔴 Urgent</button>
+            <button class="filter-btn" data-filter="excellent">Excellent</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLIENT CARDS GRID -->
+      <div class="clients-grid" id="clients-grid">
+        <!-- Rendered by dashboard.js -->
+        <div class="empty-state" style="grid-column:1/-1">
+          <i class="ti ti-loader" style="animation:spin 1s linear infinite"></i>
+          <p>Loading clients...</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end page-body -->
+
+  </div>
+  <!-- end main-content -->
+
+</div>
+
+<style>
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<!-- Scripts: auth first, then data, then sidebar, then this page -->
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

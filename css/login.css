@@ -1,0 +1,305 @@
+/* ============================================
+   REVA REPUTATION MANAGER — LOGIN PAGE
+   login.css — Only affects index.html
+   ============================================ */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  background: var(--reva-black);
+}
+
+/* --- LEFT PANEL (branding) --- */
+.login-left {
+  width: 45%;
+  background: var(--reva-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-left::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(255, 99, 78, 0.08);
+}
+
+.login-left::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 99, 78, 0.05);
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+}
+
+.login-logo-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--reva-orange);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-logo-icon i {
+  font-size: 20px;
+  color: var(--reva-white);
+}
+
+.login-logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--reva-white);
+  letter-spacing: -0.3px;
+}
+
+.login-logo-text span {
+  color: var(--reva-orange);
+}
+
+.login-tagline {
+  z-index: 1;
+}
+
+.login-tagline h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--reva-white);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.login-tagline h1 span {
+  color: var(--reva-orange);
+}
+
+.login-tagline p {
+  color: #888888;
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.login-stats {
+  display: flex;
+  gap: 32px;
+  z-index: 1;
+}
+
+.login-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.login-stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--reva-white);
+}
+
+.login-stat-label {
+  font-size: 12px;
+  color: #777777;
+}
+
+/* --- RIGHT PANEL (form) --- */
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: var(--reva-white);
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-form-header {
+  margin-bottom: 32px;
+}
+
+.login-form-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.login-form-header p {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* --- FORM ELEMENTS --- */
+.login-input-wrapper {
+  position: relative;
+}
+
+.login-input-wrapper i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.login-input-wrapper .form-input {
+  padding-left: 38px;
+}
+
+.login-input-wrapper .toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 16px;
+  transition: color var(--transition);
+}
+
+.login-input-wrapper .toggle-password:hover {
+  color: var(--text-primary);
+}
+
+.login-remember {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.login-remember label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.login-remember input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--reva-orange);
+  cursor: pointer;
+}
+
+.login-forgot {
+  font-size: 13px;
+  color: var(--reva-orange);
+  font-weight: 600;
+  transition: opacity var(--transition);
+}
+
+.login-forgot:hover {
+  opacity: 0.8;
+}
+
+/* --- LOGIN BUTTON --- */
+.login-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--reva-black);
+  color: var(--reva-white);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: 0.2px;
+}
+
+.login-btn:hover {
+  background: var(--reva-orange);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 99, 78, 0.3);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* --- ERROR MESSAGE --- */
+.login-error {
+  background: var(--status-urgent-bg);
+  border: 1px solid #feb2b2;
+  border-radius: var(--border-radius);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--status-urgent);
+  margin-bottom: 16px;
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-error.show {
+  display: flex;
+}
+
+/* --- FOOTER --- */
+.login-footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.login-footer span {
+  color: var(--reva-orange);
+  font-weight: 600;
+}
+
+/* --- LOADING SPINNER --- */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+
+.spinner.show { display: block; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .login-left { display: none; }
+  .login-right { padding: 32px 24px; }
+}

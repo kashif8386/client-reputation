@@ -1,0 +1,354 @@
+/* ============================================
+   REVA REPUTATION MANAGER — CLIENT PAGE
+   client.css — Only affects client.html
+   ============================================ */
+
+/* --- CLIENT HEADER --- */
+.client-header {
+  background: var(--reva-white);
+  border: 1px solid var(--reva-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.client-header-accent {
+  height: 5px;
+  width: 100%;
+}
+
+.client-header-body {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.client-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.client-header-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--reva-white);
+  flex-shrink: 0;
+}
+
+.client-header-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.client-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.client-meta-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.client-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- CLIENT STATS ROW --- */
+.client-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.client-stat-box {
+  background: var(--reva-white);
+  border: 1px solid var(--reva-border);
+  border-radius: var(--border-radius-lg);
+  padding: 16px 18px;
+  text-align: center;
+}
+
+.client-stat-box .label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.client-stat-box .value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.client-stat-box .sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* --- TWO COLUMN LAYOUT --- */
+.client-columns {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* --- REVIEWS LIST --- */
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.review-item {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--reva-border);
+  transition: background var(--transition);
+}
+
+.review-item:last-child { border-bottom: none; }
+
+.review-item:hover { background: #fafafa; }
+
+.review-item.urgent-review {
+  background: #fff8f7;
+  border-left: 3px solid var(--status-urgent);
+}
+
+.review-item-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-author-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--reva-off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  border: 1px solid var(--reva-border);
+}
+
+.review-author-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.review-author-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.platform-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.platform-google   { background: #e8f0fe; color: #1a73e8; }
+.platform-facebook { background: #e7f0ff; color: #1877f2; }
+
+.review-date { font-size: 11px; color: var(--text-muted); }
+
+.review-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+.review-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.replied-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--status-success);
+  font-weight: 600;
+}
+
+/* --- AI REPLY BOX --- */
+.ai-reply-box {
+  background: #f0fdf8;
+  border: 1px solid #a7f3d0;
+  border-radius: var(--border-radius);
+  padding: 12px 14px;
+  margin-top: 10px;
+  display: none;
+}
+
+.ai-reply-box.show { display: block; }
+
+.ai-reply-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--status-success);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ai-reply-text {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  background: var(--reva-white);
+  border: 1px solid var(--reva-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  resize: vertical;
+  min-height: 80px;
+  width: 100%;
+  font-family: inherit;
+  outline: none;
+}
+
+.ai-reply-text:focus {
+  border-color: var(--reva-orange);
+}
+
+.ai-reply-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- RIGHT PANEL --- */
+.client-right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--reva-border);
+  font-size: 13px;
+}
+
+.info-row:last-child { border-bottom: none; }
+
+.info-row .info-label {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.info-row .info-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* --- RESPONSE RATE BAR --- */
+.rate-bar-wrap {
+  margin-top: 6px;
+}
+
+.rate-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.rate-bar-track {
+  height: 6px;
+  background: var(--reva-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rate-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--reva-orange);
+  transition: width 0.6s ease;
+}
+
+/* --- REVIEW FILTER TABS --- */
+.review-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--reva-border);
+}
+
+.review-tab {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+
+.review-tab:hover { background: var(--reva-off-white); color: var(--text-primary); }
+.review-tab.active { background: var(--reva-black); color: var(--reva-white); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .client-columns { grid-template-columns: 1fr; }
+  .client-stats   { grid-template-columns: repeat(2, 1fr); }
+}
